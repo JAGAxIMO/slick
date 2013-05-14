@@ -62,6 +62,16 @@ case object NoType extends Type
 
 case object UnassignedType extends Type
 
+/* A type with a name, as used by tables.
+ *
+ * Compiler phases which change types may keep their own representation
+ * of the structural view but must update the AST at the end of the phase
+ * so that all NominalTypes with the same symbol have the same structural
+ * view. */
+case class NominalType(sym: TypeSymbol)(val structuralView: Type) extends Type {
+  override def toString = s"NominalType($sym)($structuralView)"
+}
+
 /** Something that has a type */
 trait Typed {
   def tpe: Type

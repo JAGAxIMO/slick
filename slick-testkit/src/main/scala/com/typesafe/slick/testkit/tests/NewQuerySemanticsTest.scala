@@ -156,6 +156,7 @@ class NewQuerySemanticsTest extends TestkitTest[RelationalTestDB] {
       assertEquals(r1e, r1)
     }
 
+    /*
     ifCap(rcap.pagingNested) {
       val q1b_0 = Coffees.sortBy(_.price).take(3) join Suppliers on (_.supID === _.id)
       val q1b = for {
@@ -392,6 +393,7 @@ class NewQuerySemanticsTest extends TestkitTest[RelationalTestDB] {
     }
 
     (SuppliersStd.ddl ++ CoffeesStd.ddl).drop
+    */
   }
 
   def testOldComposition {

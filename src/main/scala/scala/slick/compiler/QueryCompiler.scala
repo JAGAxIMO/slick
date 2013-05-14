@@ -66,6 +66,8 @@ object QueryCompiler {
     Phase.assignUniqueSymbols,
     // Distribute and normalize
     Phase.expandTables,
+    Phase.assignTypes,
+    Phase.inferTableTypes,
     Phase.createResultSetMapping,
     Phase.forceOuterBinds,
     // Convert to column form
@@ -73,8 +75,7 @@ object QueryCompiler {
     Phase.replaceFieldSymbols,
     Phase.rewritePaths,
     Phase.relabelUnions,
-    Phase.pruneFields,
-    Phase.assignTypes
+    Phase.pruneFields
   )
 
   val relationalPhases = Vector(
@@ -111,6 +112,8 @@ object Phase {
   val inline = new Inline
   val assignUniqueSymbols = new AssignUniqueSymbols
   val expandTables = new ExpandTables
+  val assignTypes = new AssignTypes
+  val inferTableTypes = new InferTableTypes
   val createResultSetMapping = new CreateResultSetMapping
   val forceOuterBinds = new ForceOuterBinds
   val expandRefs = new ExpandRefs
@@ -119,7 +122,6 @@ object Phase {
   val relabelUnions = new RelabelUnions
   val pruneFields = new PruneFields
   val resolveZipJoins = new ResolveZipJoins
-  val assignTypes = new AssignTypes
   val convertToComprehensions = new ConvertToComprehensions
   val fuseComprehensions = new FuseComprehensions
   val fixRowNumberOrdering = new FixRowNumberOrdering

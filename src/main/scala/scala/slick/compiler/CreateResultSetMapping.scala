@@ -11,7 +11,7 @@ class CreateResultSetMapping extends Phase {
 
   def apply(state: CompilerState) = state.map { n =>
     // Get the type at the outer layer with TypeMappings in place
-    val tpe = n.nodeWithComputedType(new DefaultSymbolScope(Map.empty), false).nodeType
+    val tpe = n.nodeWithComputedType(new DefaultSymbolScope(Map.empty), false, true).nodeType
     logger.debug("Client-side result type: "+tpe)
     val n2 = removeTypeMapping(n)
     logger.debug("Removed type mapping:", n2)

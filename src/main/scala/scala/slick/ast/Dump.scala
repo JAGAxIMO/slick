@@ -64,10 +64,10 @@ class DumpContext(val out: PrintWriter, val typed: Boolean = true) {
     }
     val typeInfo = if(typed && tpe != UnassignedType) " : " + tpe.toString else ""
     tree match {
-      case Path(l @ (_ :: _ :: _)) =>
+      /*case Path(l @ (_ :: _ :: _)) =>
         // Print paths on a single line
         out.println(prefix + name + Path.toString(l) + typeInfo)
-        tree.foreach { case RefNode(s) => addRef(s) }
+        tree.foreach { case RefNode(s) => addRef(s) }*/
       case _ =>
         out.println(prefix + name + tree + typeInfo)
         for((chg, n) <- tree.nodeChildren.zip(tree.nodeChildNames))
